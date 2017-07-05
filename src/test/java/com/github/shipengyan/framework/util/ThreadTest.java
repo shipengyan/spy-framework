@@ -1,7 +1,9 @@
 package com.github.shipengyan.framework.util;
 
-import com.lorne.core.framework.utils.thread.CountDownLatchHelper;
-import com.lorne.core.framework.utils.thread.IExecute;
+
+import com.github.shipengyan.framework.util.thread.CountDownLatchHelper;
+import com.github.shipengyan.framework.util.thread.IExecute;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
  * Thread 测试
  * Created by lorne on 2017/6/12.
  */
+@Slf4j
 public class ThreadTest {
 
     @Test
@@ -22,7 +25,7 @@ public class ThreadTest {
         countDownLatchHelper.addExecute(new IExecute<Long>() {
             @Override
             public Long execute() {
-                System.out.println("" + Thread.currentThread().getId());
+                log.info("{}", Thread.currentThread().getId());
                 return Thread.currentThread().getId();
             }
         });
@@ -31,7 +34,7 @@ public class ThreadTest {
         countDownLatchHelper.addExecute(new IExecute<Long>() {
             @Override
             public Long execute() {
-                System.out.println("" + Thread.currentThread().getId());
+                log.info("{}", Thread.currentThread().getId());
                 return Thread.currentThread().getId();
             }
         });
@@ -39,7 +42,7 @@ public class ThreadTest {
         countDownLatchHelper.addExecute(new IExecute<Long>() {
             @Override
             public Long execute() {
-                System.out.println("" + Thread.currentThread().getId());
+                log.info("{}", Thread.currentThread().getId());
                 return Thread.currentThread().getId();
             }
         });
