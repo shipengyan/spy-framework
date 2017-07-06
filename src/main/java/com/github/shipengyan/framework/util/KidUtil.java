@@ -5,7 +5,7 @@ import java.util.UUID;
 /**
  * Created by yuliang on 2015/8/8.
  */
-public class KidUtils {
+public class KidUtil {
 
     private static String[] chars = new String[]{"a", "b", "c", "d", "e", "f",
         "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",

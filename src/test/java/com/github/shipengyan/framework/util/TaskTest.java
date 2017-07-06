@@ -15,7 +15,7 @@ public class TaskTest {
     public void test() {
 
         //创建一个key，用来生成Task
-        final String key = KidUtils.getKid();
+        final String key = KidUtil.getKid();
 
         //创建Task
         Task task = ConditionUtils.getInstance().createTask(key);
