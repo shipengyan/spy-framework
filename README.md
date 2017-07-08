@@ -6,6 +6,9 @@ spy-framework
 
 ## OverView
 
+- 适合项目的基础类库
+- 封装常用类库
+- 第三方类库，以及网络上优良设计的类库
 
 ## Usage
 
@@ -20,3 +23,4 @@ spy-framework
     <version>${spy.framework.version}</version>
 </dependency>
 ````
+请使用最新的版本
