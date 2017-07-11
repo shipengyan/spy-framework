@@ -18,8 +18,8 @@ public final class VersionUtil {
      * @return
      */
     public static int compare(String version1, String version2) {
-        Preconditions.checkNotNull(version1, "不能为null");
-        Preconditions.checkNotNull(version2, "不能为null");
+        Preconditions.checkNotNull(version1, "version1不能为null");
+        Preconditions.checkNotNull(version2, "version2不能为null");
 
 
         String[] versionArray1 = version1.split("\\.");//注意此处为正则匹配，不能用"."；
