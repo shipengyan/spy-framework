@@ -1,6 +1,6 @@
 package com.github.shipengyan.framework.util;
 
-import org.junit.Assert;
+import com.google.common.base.Preconditions;
 
 /**
  * 版本比较工具
@@ -18,8 +18,9 @@ public final class VersionUtil {
      * @return
      */
     public static int compare(String version1, String version2) {
-        Assert.assertNotNull(version1);
-        Assert.assertNotNull(version2);
+        Preconditions.checkNotNull(version1, "不能为null");
+        Preconditions.checkNotNull(version2, "不能为null");
+
 
         String[] versionArray1 = version1.split("\\.");//注意此处为正则匹配，不能用"."；
         String[] versionArray2 = version2.split("\\.");
