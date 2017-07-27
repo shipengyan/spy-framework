@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static com.github.shipengyan.framework.common.Const.DEFAULT_CHARTSET;
+
 /**
  * 模块名
  *
@@ -33,7 +35,6 @@ import java.util.Map;
 @Slf4j
 public final class HttpClientUtil {
 
-    public static final String DEFAULT_CHARTSET = "UTF-8";
 
     private HttpClientUtil() {
 
