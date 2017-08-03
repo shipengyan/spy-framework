@@ -17,44 +17,47 @@ import java.util.concurrent.*;
 @Slf4j
 public class TaskPoolManager {
     /**
+     * 构造一个单例的线程池
+     **/
+    private static TaskPoolManager tpm = new TaskPoolManager();
+
+    private TaskPoolManager() {
+
+    }
+
+    public static TaskPoolManager newInstance() {
+        return tpm;
+    }
+
+    /**
      * 线程池维护线程的最少数量
      **/
-    private final static int                      CORE_POOL_SIZE     = Runtime.getRuntime().availableProcessors();
+    private final static int CORE_POOL_SIZE = 4;
+
     /**
      * 线程池维护线程的最大数量
      **/
-    private final static int                      MAX_POOL_SIZE      = 100;
+    private final static int MAX_POOL_SIZE = 100;
+
     /**
      * 线程池维护线程所允许的空闲时间
      **/
-    private final static int                      KEEP_ALIVE_TIME    = 0;
+    private final static int KEEP_ALIVE_TIME = 0;
+
     /**
      * 线程池所使用的缓冲队列大小
      **/
-    private final static int                      WORK_QUEUE_SIZE    = 100;
-    /**
-     * 构造一个单例的线程池
-     **/
-    private static       TaskPoolManager          tpm                = new TaskPoolManager();
-    /**
-     * 管理线程池
-     **/
-    final                ThreadPoolExecutor       threadPool         = new ThreadPoolExecutor(
-        CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME, TimeUnit.SECONDS,
-        new ArrayBlockingQueue<>(WORK_QUEUE_SIZE), this.handler);
-    /**
-     * 调度线程池
-     **/
-    final                ScheduledExecutorService scheduler          = Executors.newScheduledThreadPool(1);
-    final                ScheduledFuture<?>       taskHandler        = scheduler.scheduleAtFixedRate(accessBufferThread, 0, 1, TimeUnit.SECONDS);
+    private final static int WORK_QUEUE_SIZE = 100;
+
     /**
      * 消息缓冲队列
      **/
-    private              Queue<TaskEntity>        taskQueue          = new LinkedList<>();
+    private Queue<TaskEntity> taskQueue = new LinkedList<TaskEntity>();
+
     /**
      * 访问消息缓存的调度线程
      **/
-    final                Runnable                 accessBufferThread = new Runnable() {
+    final Runnable accessBufferThread = new Runnable() {
         public void run() {
             /**查看是否有待定请求，如果有，则创建一个新的TaskEntity，并添加到线程池中**/
             if (hasMoreAcquire()) {
@@ -64,18 +67,27 @@ public class TaskPoolManager {
             }
         }
     };
-    final                RejectedExecutionHandler handler            = new RejectedExecutionHandler() {
+
+    final RejectedExecutionHandler handler = new RejectedExecutionHandler() {
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
             taskQueue.offer(((TaskRunner) r).getTask());
         }
     };
 
-    private TaskPoolManager() {
-    }
+    /**
+     * 管理线程池
+     **/
+    final ThreadPoolExecutor threadPool = new ThreadPoolExecutor(
+        CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME, TimeUnit.SECONDS,
+        new ArrayBlockingQueue<Runnable>(WORK_QUEUE_SIZE), this.handler);
 
-    public static TaskPoolManager newInstance() {
-        return tpm;
-    }
+    /**
+     * 调度线程池
+     **/
+    final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+    final ScheduledFuture<?> taskHandler = scheduler.scheduleAtFixedRate(accessBufferThread, 0, 1, TimeUnit.SECONDS);
+
 
     /**
      * 判断线程池时候为空
