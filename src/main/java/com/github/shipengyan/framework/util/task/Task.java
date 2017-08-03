@@ -6,6 +6,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * 阻塞式 Task，可灵活配置
  * Created by yuliang on 2016/4/28.
  */
 public class Task {
