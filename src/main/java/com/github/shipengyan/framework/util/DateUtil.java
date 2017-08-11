@@ -10,15 +10,10 @@ import java.util.List;
 
 /**
  * Title: 日期工具<br>
- * Description: <br>
- * Project: 外勤E通 <br>
- * Company: Finalist IT Group <br>
- * Copyright: 2010 www.finalist.cn Inc. All rights reserved. <br>
- * Date: Apr 22, 2010
- *
  * @author Neil, yuliang
  * @version 1.0
  */
+@SuppressWarnings("deprecation")
 public final class DateUtil {
 
     /**

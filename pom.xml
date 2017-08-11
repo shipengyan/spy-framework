@@ -6,7 +6,7 @@
 
     <groupId>com.github.shipengyan</groupId>
     <artifactId>spy-framework</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
 
 
     <name>spy framework</name>
@@ -27,6 +27,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
+        <commons.collection4.version>4.1</commons.collection4.version>
         <itextpdf.version>5.5.11</itextpdf.version>
     </properties>
 
@@ -136,7 +137,12 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>4.0</version>
+            <version>${commons.collection4.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
         </dependency>
 
         <dependency>
@@ -193,6 +199,15 @@
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcmail-jdk15on</artifactId>
             <version>1.57</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
         </dependency>
 
     </dependencies>
