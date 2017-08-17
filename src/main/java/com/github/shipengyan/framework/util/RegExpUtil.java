@@ -108,7 +108,6 @@ public class RegExpUtil {
      *
      * @param url 网址，不仅仅http或者https。
      * @return 如果是返回true，不是返回false。
-     * @author 朱志杰 QQ：695520848 Aug 10, 2013 10:59:14 AM
      */
     public static boolean chkAllUrl(String url) {
         String regex = "^((https|http|ftp|rtsp|mms)?://)"
@@ -142,7 +141,6 @@ public class RegExpUtil {
      *
      * @param email 邮箱地址
      * @return 如果是返回true，不是返回false。
-     * @author 朱志杰 QQ：695520848 Aug 10, 2013 10:59:14 AM
      */
     public static boolean chkEmail(String email) {
         Pattern pattern = Pattern

@@ -165,6 +165,13 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.14</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>com.j256.simplemagic</groupId>
             <artifactId>simplemagic</artifactId>
             <version>1.12</version>
@@ -232,17 +239,20 @@
         </dependency>
 
 
-        <!--SFTP-->
+        <!--SFTP begin-->
         <dependency>
             <groupId>com.jcraft</groupId>
             <artifactId>jsch</artifactId>
             <version>0.1.54</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>commons-vfs</groupId>
             <artifactId>commons-vfs</artifactId>
             <version>1.0</version>
+            <optional>true</optional>
         </dependency>
+        <!--SFTP end-->
 
         <!--<dependency>-->
         <!--<groupId>org.apache.commons</groupId>-->

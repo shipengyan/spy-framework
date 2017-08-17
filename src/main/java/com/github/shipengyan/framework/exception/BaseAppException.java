@@ -1,6 +1,7 @@
 package com.github.shipengyan.framework.exception;
 
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,6 +16,7 @@ import java.io.Serializable;
 @Slf4j
 @Data
 @Accessors(chain = true)
+@ToString(callSuper = true)
 public class BaseAppException extends Exception implements Serializable {
 
     private static final long serialVersionUID = 1L;
