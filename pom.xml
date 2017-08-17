@@ -29,6 +29,7 @@
 
         <commons.collection4.version>4.1</commons.collection4.version>
         <itextpdf.version>5.5.11</itextpdf.version>
+        <zxing.version>3.3.0</zxing.version>
     </properties>
 
     <licenses>
@@ -209,6 +210,14 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>${zxing.version}</version>
+        </dependency>
+
 
     </dependencies>
 
