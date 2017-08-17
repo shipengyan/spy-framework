@@ -27,6 +27,8 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
+        <maven.javadoc.skip>false</maven.javadoc.skip>
+
         <commons.collection4.version>4.1</commons.collection4.version>
         <itextpdf.version>5.5.11</itextpdf.version>
         <zxing.version>3.3.0</zxing.version>
@@ -128,6 +130,12 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>1.6</version>
         </dependency>
 
         <dependency>
