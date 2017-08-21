@@ -30,4 +30,18 @@ public class NumberUtilTest {
         // 返回最大值
         System.out.println(NumberUtils.max(new double[]{3.33, 8.88, 1.11}));
     }
+
+    @Test
+    public void run35() throws Exception {
+        format(2020004.01);
+        format(200);
+        format(1.0);
+        format(-100.001);
+        format(-1111111111);
+    }
+
+    private void format(double money) {
+        log.debug("{}={}", money, NumberUtil.toCNMontrayUnit(money));
+    }
+
 }
