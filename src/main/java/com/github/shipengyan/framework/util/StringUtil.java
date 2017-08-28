@@ -5,6 +5,18 @@ import java.util.regex.Pattern;
 
 public class StringUtil {
 
+
+    /**
+     * 按空格分割
+     *
+     * @param str
+     * @return
+     */
+    public static String[] splitBySpace(String str) {
+        return str.split("\\s+");
+    }
+
+
     public static boolean isNumeric(String str) {
         Pattern pattern = Pattern.compile("[0-9]*");
         return pattern.matcher(str).matches();
