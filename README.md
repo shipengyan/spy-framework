@@ -24,3 +24,7 @@ spy-framework
 </dependency>
 ````
 请使用最新的版本
+
+## Develop
+
+- `mvn clean deploy -Dmaven.test.skip=true`
