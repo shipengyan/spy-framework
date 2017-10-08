@@ -36,7 +36,7 @@ public class SimpleDAGTest {
 
         @Override
         public Void call() throws Exception {
-            log.debug("{},Processing sql={}", Thread.currentThread().getName(), sql);
+            log.debug("Processing sql={}", sql);
 
             Thread.sleep(2000);
             return null;
