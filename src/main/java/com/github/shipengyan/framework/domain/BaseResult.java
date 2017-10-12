@@ -19,13 +19,13 @@ public class BaseResult extends BaseDomain {
     private Boolean success = true;
 
     @JSONField(ordinal = -1020)
-    private String errorCode;
+    private String errorCode; // 错误编码
 
     @JSONField(ordinal = -1010)
-    private String errorMessage;
+    private String errorMessage;// 错误信息
 
     @JSONField(ordinal = -1005)
-    private String errorField;
+    private String errorField; // 错误字段
 
     @JSONField(ordinal = -1000)
     private String errorType; // 错误类别
