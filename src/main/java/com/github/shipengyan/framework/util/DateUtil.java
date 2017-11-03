@@ -1,5 +1,7 @@
 package com.github.shipengyan.framework.util;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,10 +12,12 @@ import java.util.List;
 
 /**
  * Title: 日期工具<br>
+ *
  * @author Neil, yuliang
  * @version 1.0
  */
 @SuppressWarnings("deprecation")
+@Slf4j
 public final class DateUtil {
 
     /**
@@ -42,13 +46,18 @@ public final class DateUtil {
      * @param date string date
      * @return the parsed date
      */
-    public static Date parseDate(String date) throws ParseException {
+    public static Date parseDate(String date) {
         return parseDate(date, DATE_FORMAT);
     }
 
-    public static Date parseDate(String date, String pattern) throws ParseException {
+    public static Date parseDate(String date, String pattern) {
         SimpleDateFormat format = new SimpleDateFormat(pattern);
-        return format.parse(date);
+        try {
+            return format.parse(date);
+        } catch (ParseException e) {
+            log.error("日期解析错误", e);
+        }
+        return null;
     }
 
     /**
@@ -405,7 +414,7 @@ public final class DateUtil {
      * 本周指定星期几的日期
      *
      * @param date
-     * @param monday
+     * @param day
      * @return
      */
     public static String getCurrentWeekDay(Date date, int day) {
@@ -543,6 +552,46 @@ public final class DateUtil {
             month--;
         }
         return list;
+    }
+
+    /**
+     * 获取最大日期
+     *
+     * @return
+     */
+    public static Date getMaxDate() {
+        return parseDate("99991231", "YYYYMMDD");
+    }
+
+
+    /**
+     * 获取0点
+     *
+     * @return
+     */
+    public static Date getStartTime() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取24点
+     *
+     * @return
+     */
+    public static Date getEndTime() {
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 24);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
+
     }
 
 }
