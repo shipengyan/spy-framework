@@ -314,8 +314,8 @@ public final class DateUtil {
         cal.set(Calendar.WEEK_OF_YEAR, weekNum);
         /*
          * cal.set(Calendar.HOUR_OF_DAY, 0); cal.set(Calendar.MINUTE, 0);
-		 * cal.set(Calendar.SECOND, 0);
-		 */
+         * cal.set(Calendar.SECOND, 0);
+         */
         return cal.getTime();
     }
 
@@ -592,6 +592,53 @@ public final class DateUtil {
         cal.set(Calendar.MILLISECOND, 0);
         return cal.getTime();
 
+    }
+
+
+    /**
+     * 获取指定日期的开始时间
+     *
+     * @param date
+     * @return
+     */
+    public static Date getStartTime(Date date) {
+        if (date == null) {
+            return getStartTime();
+        } else {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+
+            cal.set(Calendar.HOUR_OF_DAY, 0);
+            cal.set(Calendar.MINUTE, 0);
+            cal.set(Calendar.SECOND, 0);
+            cal.set(Calendar.MILLISECOND, 0);
+
+            return cal.getTime();
+        }
+    }
+
+
+    /**
+     * 获取指定日期的结束时间
+     *
+     * @param date
+     * @return
+     */
+    public static Date getEndTime(Date date) {
+        if (date == null) {
+            return getEndTime();
+        } else {
+            Calendar cal = Calendar.getInstance();
+
+            cal.setTime(date);
+
+            cal.set(Calendar.HOUR_OF_DAY, 24);
+            cal.set(Calendar.MINUTE, 0);
+            cal.set(Calendar.SECOND, 0);
+            cal.set(Calendar.MILLISECOND, 0);
+
+            return cal.getTime();
+        }
     }
 
 }
