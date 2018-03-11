@@ -23,17 +23,17 @@ public final class DateUtil {
     /**
      * default date format pattern
      */
-    public final static String DATE_FORMAT                  = "yyyy-MM-dd";
-    public final static String MONTH_DATE_FORMAT            = "MM-dd";
-    public final static String YEAR_WEEK_FORMAT             = "yyyy-ww";
-    public final static String YEAR_MONTH_FORMAT            = "yyyy-MM";
-    public final static String YEAR_WEEK_FORMAT_SHORT       = "yy-ww";
-    public final static String YEAR_MONTH_FORMAT_SHORT      = "yy-MM";
-    public final static String DATE_TIME_FORMAT             = "yyyy-MM-dd HH:mm";
-    public final static String FULL_DATE_TIME_FORMAT        = "yyyy-MM-dd HH:mm:ss";
-    public final static String TIME_FORMAT                  = "HH:mm";
+    public final static String DATE_FORMAT = "yyyy-MM-dd";
+    public final static String MONTH_DATE_FORMAT = "MM-dd";
+    public final static String YEAR_WEEK_FORMAT = "yyyy-ww";
+    public final static String YEAR_MONTH_FORMAT = "yyyy-MM";
+    public final static String YEAR_WEEK_FORMAT_SHORT = "yy-ww";
+    public final static String YEAR_MONTH_FORMAT_SHORT = "yy-MM";
+    public final static String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm";
+    public final static String FULL_DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public final static String TIME_FORMAT = "HH:mm";
     public final static String MONTH_DAY_HOUR_MINUTE_FORMAT = "MM-dd HH:mm";
-    public final static String LOCATE_DATE_FORMAT           = "yyyyMMddHHmmss";
+    public final static String LOCATE_DATE_FORMAT = "yyyyMMddHHmmss";
 
     private static final int DAYS_OF_A_WEEK = 7;
 
@@ -174,9 +174,9 @@ public final class DateUtil {
      * @return the string date
      */
     public static String getStringDate(Calendar calendar) {
-        int year  = calendar.get(Calendar.YEAR);
+        int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH) + 1;
-        int day   = calendar.get(Calendar.DAY_OF_MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
         return year + "-" + getNiceString(month) + "-" + getNiceString(day);
     }
 
@@ -214,7 +214,7 @@ public final class DateUtil {
     }
 
     public static String getInterval(long intervalTime) {
-        int hour   = (int) (intervalTime / (1000 * 60 * 60));
+        int hour = (int) (intervalTime / (1000 * 60 * 60));
         int minute = (int) (intervalTime / (1000 * 60) - hour * 60);
         int second = (int) ((intervalTime / 1000) - hour * 60 * 60 - minute * 60);
         if (hour > 0) {
@@ -456,7 +456,7 @@ public final class DateUtil {
         calendar.set(Calendar.MONTH, month - 1);
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         List<String> result = new ArrayList<String>();
-        Date         date   = calendar.getTime();
+        Date date = calendar.getTime();
         while (date.getMonth() == calendar.get(Calendar.MONTH)) {
             result.add(formatDate(date));
             date = addDate(date, 1);
@@ -466,9 +466,9 @@ public final class DateUtil {
 
     public static List<String> getDateRange(String strBeginDate,
                                             String strEndDate, String pattern) throws ParseException {
-        List<String> ret       = new ArrayList<String>();
-        Date         beginDate = parseDate(strBeginDate);
-        Date         endDate   = parseDate(strEndDate);
+        List<String> ret = new ArrayList<String>();
+        Date beginDate = parseDate(strBeginDate);
+        Date endDate = parseDate(strEndDate);
         ret.add(formatDate(beginDate, pattern));
         while (!beginDate.equals(endDate)) {
             beginDate = addDate(beginDate, 1);
@@ -483,12 +483,12 @@ public final class DateUtil {
 
     public static List<String> getWeekRange(String strBeginDate,
                                             String strEndDate, String pattern) throws ParseException {
-        List<String> ret       = new ArrayList<String>();
-        Date         beginDate = parseDate(strBeginDate);
-        Date         endDate   = parseDate(strEndDate);
+        List<String> ret = new ArrayList<String>();
+        Date beginDate = parseDate(strBeginDate);
+        Date endDate = parseDate(strEndDate);
 
         String beginFormat = formatDate(beginDate, pattern);
-        String endFormat   = formatDate(endDate, pattern);
+        String endFormat = formatDate(endDate, pattern);
         ret.add(beginFormat);
 
         while (!beginFormat.equals(endFormat)) {
@@ -501,11 +501,11 @@ public final class DateUtil {
 
     public static List<String> getMonthRange(String strBeginDate,
                                              String strEndDate, String pattern) throws ParseException {
-        List<String> ret         = new ArrayList<String>();
-        Date         beginDate   = parseDate(strBeginDate, pattern);
-        Date         endDate     = parseDate(strEndDate, pattern);
-        String       beginFormat = formatDate(beginDate, pattern);
-        String       endFormat   = formatDate(endDate, pattern);
+        List<String> ret = new ArrayList<String>();
+        Date beginDate = parseDate(strBeginDate, pattern);
+        Date endDate = parseDate(strEndDate, pattern);
+        String beginFormat = formatDate(beginDate, pattern);
+        String endFormat = formatDate(endDate, pattern);
         ret.add(beginFormat);
         while (!beginFormat.equals(endFormat)) {
             beginDate = addMonth(beginDate, 1);
@@ -528,7 +528,7 @@ public final class DateUtil {
     //根据日期取得星期几
     public static String getWeek(Date date) {
         String[] weeks = {"周日", "周一", "周二", "周三", "周四", "周五", "周六"};
-        Calendar cal   = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         int week_index = cal.get(Calendar.DAY_OF_WEEK) - 1;
         if (week_index < 0) {
@@ -538,10 +538,10 @@ public final class DateUtil {
     }
 
     public static List<String> getFullYear() {
-        List<String> list  = new ArrayList<>();
-        Date         date  = new Date();
-        int          month = date.getMonth() + 1;
-        int          year  = date.getYear() + 1900;
+        List<String> list = new ArrayList<>();
+        Date date = new Date();
+        int month = date.getMonth() + 1;
+        int year = date.getYear() + 1900;
         for (int i = 0; i < 12; i++) {
             if (month == 0) {
                 month = 12;
@@ -639,6 +639,55 @@ public final class DateUtil {
 
             return cal.getTime();
         }
+    }
+
+
+    /**
+     * 获取前月的第一天
+     *
+     * @return
+     */
+    public static Date getFirstDayOfLastMonth() {
+        Calendar cal_1 = Calendar.getInstance();//获取当前日期
+        cal_1.add(Calendar.MONTH, -1);
+        cal_1.set(Calendar.DAY_OF_MONTH, 1);//设置为1号,当前日期既为本月第一天
+
+        return cal_1.getTime();
+    }
+
+
+    /**
+     * 获取前月的最后一天
+     *
+     * @return
+     */
+    public static Date getLastDayOfLastMonth() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, 0);//设置为1号,当前日期既为本月第一天
+        return cal.getTime();
+    }
+
+    /**
+     * 获取当前月的第一天
+     *
+     * @return
+     */
+    public static Date getFirstDayOfMonth() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, 0);
+        cal.set(Calendar.DAY_OF_MONTH, 1);//设置为1号,当前日期既为本月第一天
+        return cal.getTime();
+    }
+
+    /**
+     * 获取当前月的最后一天
+     *
+     * @return
+     */
+    public static Date getLastDayOfMonth() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        return cal.getTime();
     }
 
 }
