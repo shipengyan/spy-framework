@@ -28,3 +28,7 @@ spy-framework
 ## Develop
 
 - `mvn clean deploy -Dmaven.test.skip=true`
+
+## 类库说明
+
+- `commons-text` 字符串模板处理，替换，比对
