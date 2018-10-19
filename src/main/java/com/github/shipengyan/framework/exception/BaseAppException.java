@@ -47,6 +47,7 @@ public class BaseAppException extends Exception implements Serializable {
     }
 
     public BaseAppException(String code, String desc) {
+        super(code + ":" + desc);
         this.code = code;
         this.desc = desc;
     }
