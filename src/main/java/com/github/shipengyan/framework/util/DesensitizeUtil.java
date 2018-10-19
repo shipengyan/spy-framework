@@ -47,7 +47,7 @@ public class DesensitizeUtil {
     /**
      * [中文姓名] 只显示第一个汉字，其他隐藏为2个星号<例子：李**>
      *
-     * @param name
+     * @param fullName
      * @return
      */
     public static String chineseName(String fullName) {
